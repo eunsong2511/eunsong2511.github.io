@@ -1,0 +1,160 @@
+---
+import Icon from './Icon.astro';
+import { site } from '../data/content';
+import { emphasize, withBase } from '../utils';
+---
+
+<section id="top" class="hero container">
+	<ul class="tags">
+		{site.tags.map((tag) => <li>#{tag}</li>)}
+	</ul>
+	<h1 class="name">{site.name}</h1>
+	<p class="role">{site.role}</p>
+
+	<div class="intro">
+		{site.intro.map((line) => <p set:html={emphasize(line)} />)}
+	</div>
+
+	<ul class="contacts">
+		{
+			site.email && (
+				<li>
+					<Icon name="mail" />
+					<a href={`mailto:${site.email}`}>{site.email}</a>
+				</li>
+			)
+		}
+		{
+			site.phone && (
+				<li>
+					<Icon name="phone" />
+					<a href={`tel:${site.phone}`}>{site.phone}</a>
+				</li>
+			)
+		}
+	</ul>
+
+	<div class="actions">
+		{
+			site.github && (
+				<a class="btn" href={site.github} target="_blank" rel="noopener noreferrer">
+					<Icon name="github" />
+					GitHub
+				</a>
+			)
+		}
+		{
+			site.blog && (
+				<a class="btn" href={site.blog} target="_blank" rel="noopener noreferrer">
+					<Icon name="blog" />
+					블로그
+				</a>
+			)
+		}
+		{
+			site.resume && (
+				<a class="btn btn-primary" href={withBase(site.resume)} target="_blank" rel="noopener noreferrer">
+					<Icon name="file" />
+					이력서
+				</a>
+			)
+		}
+	</div>
+</section>
+
+<style>
+	.hero {
+		padding-top: 104px;
+		padding-bottom: 88px;
+	}
+
+	.tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 6px;
+		margin-bottom: 20px;
+	}
+
+	.tags li {
+		padding: 3px 10px;
+		border-radius: 999px;
+		background: var(--accent-soft);
+		color: var(--accent-text);
+		font-size: 0.8125rem;
+		font-weight: 600;
+	}
+
+	.name {
+		font-size: clamp(2.5rem, 7vw, 3.75rem);
+		font-weight: 800;
+		letter-spacing: -0.035em;
+		line-height: 1.1;
+	}
+
+	.role {
+		margin-top: 10px;
+		font-size: clamp(1.0625rem, 2.4vw, 1.3rem);
+		font-weight: 600;
+		color: var(--accent-text);
+	}
+
+	.intro {
+		display: grid;
+		gap: 6px;
+		margin-top: 28px;
+		font-size: 1.0625rem;
+		color: var(--muted);
+	}
+
+	.intro :global(strong) {
+		color: var(--text);
+		font-weight: 650;
+	}
+
+	.contacts {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px 20px;
+		margin-top: 28px;
+		font-size: 0.9375rem;
+		color: var(--muted);
+	}
+
+	.contacts:empty {
+		display: none;
+	}
+
+	.contacts li {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+	}
+
+	.contacts :global(svg) {
+		width: 16px;
+		height: 16px;
+		color: var(--subtle);
+	}
+
+	.contacts a:hover {
+		color: var(--text);
+	}
+
+	.actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px;
+		margin-top: 24px;
+	}
+
+	@media (max-width: 640px) {
+		.hero {
+			padding-top: 64px;
+			padding-bottom: 64px;
+		}
+
+		.intro {
+			font-size: 1rem;
+		}
+	}
+</style>

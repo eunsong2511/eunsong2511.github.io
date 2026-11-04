@@ -1,0 +1,149 @@
+---
+import Icon from './Icon.astro';
+import { site } from '../data/content';
+
+// 상단 메뉴: href는 각 섹션의 id와 같아야 해요
+const nav = [
+	{ label: '소개', href: '#about' },
+	{ label: '기술', href: '#skills' },
+	{ label: '프로젝트', href: '#projects' },
+	{ label: '이력', href: '#history' },
+	{ label: '연락', href: '#contact' },
+];
+---
+
+<header class="header">
+	<div class="container inner">
+		<a href="#top" class="logo">{site.name}</a>
+		<nav aria-label="섹션 이동">
+			<ul>
+				{
+					nav.map((item) => (
+						<li>
+							<a href={item.href}>{item.label}</a>
+						</li>
+					))
+				}
+			</ul>
+		</nav>
+		<button class="theme-toggle" type="button" aria-label="밝은/어두운 화면 전환">
+			<Icon name="moon" class="icon-moon" />
+			<Icon name="sun" class="icon-sun" />
+		</button>
+	</div>
+</header>
+
+<script>
+	const button = document.querySelector('.theme-toggle');
+	button?.addEventListener('click', () => {
+		const root = document.documentElement;
+		const current =
+			root.dataset.theme ?? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+		const next = current === 'dark' ? 'light' : 'dark';
+		root.dataset.theme = next;
+		try {
+			localStorage.setItem('theme', next);
+		} catch {}
+	});
+</script>
+
+<style>
+	.header {
+		position: sticky;
+		top: 0;
+		z-index: 10;
+		background: var(--header-bg);
+		backdrop-filter: saturate(180%) blur(12px);
+		-webkit-backdrop-filter: saturate(180%) blur(12px);
+		border-bottom: 1px solid var(--border);
+	}
+
+	.inner {
+		display: flex;
+		align-items: center;
+		gap: 24px;
+		height: 60px;
+	}
+
+	.logo {
+		font-weight: 700;
+		letter-spacing: -0.02em;
+		flex-shrink: 0;
+	}
+
+	nav {
+		flex: 1;
+		min-width: 0;
+		overflow-x: auto;
+		scrollbar-width: none;
+	}
+
+	nav::-webkit-scrollbar {
+		display: none;
+	}
+
+	nav ul {
+		display: flex;
+		justify-content: flex-end;
+		gap: 22px;
+		width: max-content;
+		margin-left: auto;
+	}
+
+	nav a {
+		font-size: 0.9rem;
+		color: var(--muted);
+		white-space: nowrap;
+		transition: color 0.15s;
+	}
+
+	nav a:hover {
+		color: var(--text);
+	}
+
+	.theme-toggle {
+		display: grid;
+		place-items: center;
+		width: 36px;
+		height: 36px;
+		flex-shrink: 0;
+		padding: 0;
+		border: 1px solid var(--border);
+		border-radius: 10px;
+		background: var(--bg);
+		color: var(--muted);
+		cursor: pointer;
+	}
+
+	.theme-toggle:hover {
+		color: var(--text);
+	}
+
+	.theme-toggle :global(svg) {
+		width: 18px;
+		height: 18px;
+	}
+
+	.theme-toggle :global(.icon-moon) {
+		display: var(--moon-display);
+	}
+
+	.theme-toggle :global(.icon-sun) {
+		display: var(--sun-display);
+	}
+
+	@media (max-width: 640px) {
+		.inner {
+			gap: 14px;
+			height: 56px;
+		}
+
+		nav ul {
+			gap: 14px;
+		}
+
+		nav a {
+			font-size: 0.875rem;
+		}
+	}
+</style>

@@ -1,0 +1,97 @@
+---
+import { history } from '../data/content';
+---
+
+<section id="history" class="section">
+	<div class="container">
+		<p class="eyebrow">04 — History</p>
+		<h2 class="section-title">이력</h2>
+
+		<ol class="timeline">
+			{
+				history.map((entry) => (
+					<li>
+						<span class="mono">{entry.period}</span>
+						<div>
+							<h3>{entry.title}</h3>
+							{entry.subtitle && <p class="subtitle">{entry.subtitle}</p>}
+							{entry.items.length > 0 && (
+								<ul>
+									{entry.items.map((item) => (
+										<li>{item}</li>
+									))}
+								</ul>
+							)}
+						</div>
+					</li>
+				))
+			}
+		</ol>
+	</div>
+</section>
+
+<style>
+	.timeline > li {
+		display: grid;
+		grid-template-columns: 180px 1fr;
+		gap: 16px;
+		padding: 20px 0;
+	}
+
+	.timeline > li + li {
+		border-top: 1px solid var(--border);
+	}
+
+	.timeline > li:first-child {
+		padding-top: 0;
+	}
+
+	.timeline .mono {
+		padding-top: 3px;
+	}
+
+	h3 {
+		font-size: 1.0625rem;
+		font-weight: 700;
+		letter-spacing: -0.02em;
+	}
+
+	.subtitle {
+		margin-top: 2px;
+		font-size: 0.9375rem;
+		color: var(--muted);
+	}
+
+	ul {
+		margin-top: 10px;
+	}
+
+	ul li {
+		position: relative;
+		padding-left: 16px;
+		font-size: 0.9375rem;
+		color: var(--muted);
+	}
+
+	ul li + li {
+		margin-top: 4px;
+	}
+
+	ul li::before {
+		content: '';
+		position: absolute;
+		left: 2px;
+		top: 0.72em;
+		width: 5px;
+		height: 5px;
+		border-radius: 50%;
+		background: var(--subtle);
+	}
+
+	@media (max-width: 640px) {
+		.timeline > li {
+			grid-template-columns: 1fr;
+			gap: 4px;
+		}
+	}
+</style>

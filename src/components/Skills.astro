@@ -1,0 +1,65 @@
+---
+import { skills } from '../data/content';
+---
+
+<section id="skills" class="section">
+	<div class="container">
+		<p class="eyebrow">02 — Skills</p>
+		<h2 class="section-title">기술</h2>
+
+		<dl class="groups">
+			{
+				skills.map((skill) => (
+					<div class="row">
+						<dt>{skill.group}</dt>
+						<dd>
+							<ul class="chips">
+								{skill.items.map((item) => (
+									<li class="chip">{item}</li>
+								))}
+							</ul>
+						</dd>
+					</div>
+				))
+			}
+		</dl>
+	</div>
+</section>
+
+<style>
+	.groups {
+		margin: 0;
+		border: 1px solid var(--border);
+		border-radius: var(--radius);
+		overflow: hidden;
+	}
+
+	.row {
+		display: grid;
+		grid-template-columns: 180px 1fr;
+		gap: 16px;
+		align-items: center;
+		padding: 18px 22px;
+	}
+
+	.row + .row {
+		border-top: 1px solid var(--border);
+	}
+
+	dt {
+		font-size: 0.9375rem;
+		font-weight: 700;
+	}
+
+	dd {
+		margin: 0;
+	}
+
+	@media (max-width: 640px) {
+		.row {
+			grid-template-columns: 1fr;
+			gap: 10px;
+			padding: 16px 18px;
+		}
+	}
+</style>

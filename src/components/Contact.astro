@@ -1,0 +1,87 @@
+---
+import Icon from './Icon.astro';
+import { contact, site } from '../data/content';
+---
+
+<section id="contact" class="section">
+	<div class="container">
+		<div class="box">
+			<p class="eyebrow">05 — Contact</p>
+			<h2>{contact.title}</h2>
+			<p class="message">{contact.message}</p>
+			<div class="actions">
+				{
+					site.email && (
+						<a class="btn btn-primary" href={`mailto:${site.email}`}>
+							<Icon name="mail" />
+							이메일 보내기
+						</a>
+					)
+				}
+				{
+					site.github && (
+						<a class="btn" href={site.github} target="_blank" rel="noopener noreferrer">
+							<Icon name="github" />
+							GitHub
+						</a>
+					)
+				}
+			</div>
+		</div>
+	</div>
+</section>
+
+<footer class="container footer">
+	<p>© {new Date().getFullYear()} {site.name}</p>
+	<a href="#top">맨 위로 ↑</a>
+</footer>
+
+<style>
+	.box {
+		padding: 48px 32px;
+		border-radius: 20px;
+		background: var(--surface);
+		border: 1px solid var(--border);
+		text-align: center;
+	}
+
+	h2 {
+		font-size: clamp(1.5rem, 4vw, 2rem);
+		font-weight: 800;
+		letter-spacing: -0.03em;
+		line-height: 1.3;
+	}
+
+	.message {
+		margin-top: 10px;
+		color: var(--muted);
+	}
+
+	.actions {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 8px;
+		margin-top: 24px;
+	}
+
+	.footer {
+		display: flex;
+		justify-content: space-between;
+		gap: 16px;
+		padding-top: 8px;
+		padding-bottom: 48px;
+		font-size: 0.8125rem;
+		color: var(--subtle);
+	}
+
+	.footer a:hover {
+		color: var(--text);
+	}
+
+	@media (max-width: 640px) {
+		.box {
+			padding: 36px 20px;
+		}
+	}
+</style>
