@@ -1,0 +1,24 @@
+---
+import { site } from '../data/content';
+---
+
+<footer class="container footer">
+	<p>© {new Date().getFullYear()} {site.name}</p>
+	<a href="#top">맨 위로 ↑</a>
+</footer>
+
+<style>
+	.footer {
+		display: flex;
+		justify-content: space-between;
+		gap: 16px;
+		padding-top: 8px;
+		padding-bottom: 48px;
+		font-size: 0.8125rem;
+		color: var(--subtle);
+	}
+
+	.footer a:hover {
+		color: var(--text);
+	}
+</style>

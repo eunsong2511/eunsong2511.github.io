@@ -1,15 +1,17 @@
 ---
 import Icon from './Icon.astro';
 import { site } from '../data/content';
+import { visibleSections, type SectionKey } from '../utils';
 
-// 상단 메뉴: href는 각 섹션의 id와 같아야 해요
-const nav = [
-	{ label: '소개', href: '#about' },
-	{ label: '기술', href: '#skills' },
-	{ label: '프로젝트', href: '#projects' },
-	{ label: '이력', href: '#history' },
-	{ label: '연락', href: '#contact' },
-];
+// 상단 메뉴 이름 (보이는 섹션만 메뉴에 나와요)
+const labels: Record<SectionKey, string> = {
+	about: '소개',
+	skills: '기술',
+	projects: '프로젝트',
+	history: '이력',
+	contact: '연락',
+};
+const nav = visibleSections.map((key) => ({ label: labels[key], href: `#${key}` }));
 ---
 
 <header class="header">

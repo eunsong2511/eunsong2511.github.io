@@ -1,10 +1,11 @@
 ---
 import { about } from '../data/content';
+import { sectionNumber } from '../utils';
 ---
 
 <section id="about" class="section">
 	<div class="container">
-		<p class="eyebrow">01 — About</p>
+		<p class="eyebrow">{sectionNumber('about')} — About</p>
 		<h2 class="section-title">소개</h2>
 
 		<div class="text">

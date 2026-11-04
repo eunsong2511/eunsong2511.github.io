@@ -1,6 +1,7 @@
 ---
 import Icon from './Icon.astro';
 import { projects } from '../data/content';
+import { sectionNumber } from '../utils';
 
 // 펼쳐보기 안의 제목들
 const detailSections = [
@@ -13,7 +14,7 @@ const detailSections = [
 
 <section id="projects" class="section">
 	<div class="container">
-		<p class="eyebrow">03 — Projects</p>
+		<p class="eyebrow">{sectionNumber('projects')} — Projects</p>
 		<h2 class="section-title">프로젝트</h2>
 
 		<div class="list">

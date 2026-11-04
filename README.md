@@ -19,8 +19,8 @@ npm run dev   # 미리보기 시작 (끄려면 Ctrl + C)
 |---|---|
 | 이름, 소개, 기술, 프로젝트, 이력, 연락처 등 **모든 글** | `src/data/content.ts` |
 | 색상, 글꼴 | `src/styles/global.css` 맨 위 |
-| 섹션 순서 / 빼기 | `src/pages/index.astro` |
-| 상단 메뉴 | `src/components/Header.astro` |
+| 섹션 숨기기 / 순서 바꾸기 | `src/data/content.ts` 맨 위의 `sections` (`false`면 숨김, 내용은 보관) |
+| 상단 메뉴 이름 | `src/components/Header.astro` |
 | 브라우저 탭 아이콘 | `public/favicon.svg` |
 | 이력서 PDF | `public/resume.pdf`로 넣고 `content.ts`의 `resume`를 `'/resume.pdf'`로 |
 
@@ -49,9 +49,9 @@ git push
 src/
 ├─ data/content.ts      ← 사이트의 모든 글
 ├─ styles/global.css    ← 색상·글꼴·공통 스타일
-├─ pages/index.astro    ← 섹션 배치
+├─ pages/index.astro    ← 페이지 뼈대
 ├─ layouts/Layout.astro ← <head> (제목, 공유 정보, 글꼴)
-└─ components/          ← 섹션별 화면 (Header, Hero, About, Skills, Projects, History, Contact)
+└─ components/          ← 섹션별 화면 (Header, Hero, About, Skills, Projects, History, Contact, Footer)
 public/                 ← 이미지·PDF·파비콘처럼 그대로 올라가는 파일
 ```
 

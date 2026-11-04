@@ -1,12 +1,13 @@
 ---
 import Icon from './Icon.astro';
 import { contact, site } from '../data/content';
+import { sectionNumber } from '../utils';
 ---
 
 <section id="contact" class="section">
 	<div class="container">
 		<div class="box">
-			<p class="eyebrow">05 — Contact</p>
+			<p class="eyebrow">{sectionNumber('contact')} — Contact</p>
 			<h2>{contact.title}</h2>
 			<p class="message">{contact.message}</p>
 			<div class="actions">
@@ -30,11 +31,6 @@ import { contact, site } from '../data/content';
 		</div>
 	</div>
 </section>
-
-<footer class="container footer">
-	<p>© {new Date().getFullYear()} {site.name}</p>
-	<a href="#top">맨 위로 ↑</a>
-</footer>
 
 <style>
 	.box {
@@ -63,20 +59,6 @@ import { contact, site } from '../data/content';
 		justify-content: center;
 		gap: 8px;
 		margin-top: 24px;
-	}
-
-	.footer {
-		display: flex;
-		justify-content: space-between;
-		gap: 16px;
-		padding-top: 8px;
-		padding-bottom: 48px;
-		font-size: 0.8125rem;
-		color: var(--subtle);
-	}
-
-	.footer a:hover {
-		color: var(--text);
 	}
 
 	@media (max-width: 640px) {
