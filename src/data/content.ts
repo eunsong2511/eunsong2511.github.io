@@ -26,9 +26,9 @@ export const site = {
 	tags: ['백엔드', '서비스기획', 'API설계', 'AI서비스'],
 	// 이름 아래 세 줄 소개
 	intro: [
-		'사용자의 문제를 **기획으로 정의하고**, **백엔드로 해결하는** 개발자입니다.',
-		'팀이 서로를 기다리지 않도록 **API 계약을 먼저 정하고** 함께 맞춰 갑니다.',
-		'외부 서비스가 실패해도 **사용자 경험은 멈추지 않는** 서버를 만듭니다.',
+		'사용자의 문제를 **기획으로 정의하고**, **백엔드로 구현하는** 개발자입니다.',
+		'다양한 **팀 프로젝트**에 참여하며 **서비스를 직접 개발**하고 있습니다.',
+		'**중앙대학교 INC Lab 학부연구생**으로 연구 경험을 쌓고 있습니다.',
 	],
 	email: 'eunsong2511@gmail.com',
 	phone: '', // 공개하고 싶을 때만 입력 (예: '010-0000-0000')
@@ -74,20 +74,23 @@ export const skills = [
 // 위에 있는 프로젝트가 먼저 보여요. details 안의 항목은 필요 없으면 지워도 돼요.
 export const projects = [
 	{
-		title: '초보 러너를 위한 러닝 앱 「달리」',
+		title: '달리',
 		period: '2026.08',
 		type: '멋쟁이사자처럼 해커톤 · 팀 5명',
 		roles: ['백엔드 전담', '기획 참여'],
-		summary: '더 빠르게가 아니라, 끝까지 달릴 수 있는 나만의 리듬을 찾아주는 iOS 러닝 앱',
+		summary: '초보 러너의 개인 케이던스를 기준으로 무리 없는 완주를 돕고, 기록·계획을 일상 루틴으로 연결하는 러닝 앱',
 		highlight: 'API 설계 · DB · AI 리포트 · 배포까지 서버 전체 담당',
 		stack: ['FastAPI', 'PostgreSQL', 'SQLAlchemy', 'Alembic', 'OpenAI API', 'Docker', 'Nginx', 'AWS EC2'],
 		links: [{ label: 'GitHub', url: 'https://github.com/Gonu19/Dalli' }],
+		// 사진: public/projects 폴더에 파일을 넣고 [ ] 안에 아래처럼 한 줄씩 적어 주세요. 적은 순서대로 보여요.
+		// { src: '/projects/dalli-home.png', alt: '달리 홈 화면' },
+		// alt는 사진이 안 보일 때 대신 나오는 설명이에요.
+		images: [
+			{ src: '/projects/dalli-cover.webp', alt: '달리 소개 이미지: 내 속도로 만드는 러닝 습관' },
+			{ src: '/projects/dalli-screens.webp', alt: '달리 앱 화면 4개: 맞춤 리듬 추천, 러닝 가이드, AI 리포트, 루틴 캘린더' },
+		] as { src: string; alt: string }[],
 		details: {
 			problem: '러닝 초보자는 자신에게 맞는 페이스를 몰라 초반에 너무 빨리 달리다 금방 지쳐 포기하곤 합니다. 기존 러닝 앱은 거리·속도·순위 중심이라, "끝까지 달려 본 경험"이 필요한 초보자에게는 맞지 않았습니다.',
-			planning: [
-				'팀과 함께 초보 러너 페르소나를 정하고, 핵심 기능을 리듬 가이드 · AI 리포트 · 루틴 캘린더 3가지로 고정',
-				'cadence, baseline 같은 내부 용어를 "리듬", "나의 기준 리듬"처럼 사용자 언어로 바꾸는 화면 문구 규칙 정리',
-			],
 			development: [
 				'API 계약 문서와 ERD를 직접 작성해 앱과 서버가 같은 기준으로 개발하도록 정리',
 				'실서버보다 Mock API를 먼저 배포하고, 같은 HTTPS 주소에서 실서버로 전환해 프론트엔드가 기다리지 않고 개발하도록 지원',

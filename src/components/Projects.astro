@@ -1,13 +1,12 @@
 ---
 import Icon from './Icon.astro';
 import { projects } from '../data/content';
-import { sectionNumber } from '../utils';
+import { sectionNumber, withBase } from '../utils';
 
 // 펼쳐보기 안의 제목들
 const detailSections = [
-	{ key: 'problem', label: '왜 만들었나' },
-	{ key: 'planning', label: '기획에서 한 일' },
-	{ key: 'development', label: '개발에서 한 일' },
+	{ key: 'problem', label: '개발 동기' },
+	{ key: 'development', label: '개발 내용' },
 	{ key: 'result', label: '결과' },
 ] as const;
 ---
@@ -60,6 +59,30 @@ const detailSections = [
 							</div>
 						)}
 
+						{project.images.length > 0 && (
+							<div class="gallery-wrap">
+								<ul class="gallery">
+									{project.images.map((image) => (
+										<li>
+											<a href={withBase(image.src)} target="_blank" rel="noopener noreferrer">
+												<img src={withBase(image.src)} alt={image.alt} loading="lazy" />
+											</a>
+										</li>
+									))}
+								</ul>
+								{project.images.length > 1 && (
+									<>
+										<button class="gallery-arrow prev" type="button" aria-label="이전 사진" disabled>
+											<Icon name="chevron" />
+										</button>
+										<button class="gallery-arrow next" type="button" aria-label="다음 사진">
+											<Icon name="chevron" />
+										</button>
+									</>
+								)}
+							</div>
+						)}
+
 						{project.details && (
 							<details>
 								<summary>
@@ -95,9 +118,34 @@ const detailSections = [
 	</div>
 </section>
 
+<script>
+	document.querySelectorAll('.gallery-wrap').forEach((wrap) => {
+		const gallery = wrap.querySelector('.gallery');
+		const prev = wrap.querySelector<HTMLButtonElement>('.prev');
+		const next = wrap.querySelector<HTMLButtonElement>('.next');
+		if (!gallery || !prev || !next) return;
+
+		const update = () => {
+			prev.disabled = gallery.scrollLeft <= 1;
+			next.disabled = gallery.scrollLeft + gallery.clientWidth >= gallery.scrollWidth - 1;
+		};
+		const move = (direction: number) => {
+			const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+			gallery.scrollBy({ left: direction * gallery.clientWidth, behavior: reduce ? 'auto' : 'smooth' });
+		};
+
+		prev.addEventListener('click', () => move(-1));
+		next.addEventListener('click', () => move(1));
+		gallery.addEventListener('scroll', update, { passive: true });
+		wrap.querySelectorAll('img').forEach((img) => img.addEventListener('load', update));
+		update();
+	});
+</script>
+
 <style>
 	.list {
 		display: grid;
+		grid-template-columns: minmax(0, 1fr);
 		gap: 16px;
 	}
 
@@ -198,6 +246,91 @@ const detailSections = [
 		height: 14px;
 	}
 
+	.gallery-wrap {
+		position: relative;
+		margin-top: 20px;
+	}
+
+	.gallery {
+		display: flex;
+		gap: 12px;
+		overflow-x: auto;
+		scroll-snap-type: x mandatory;
+		scrollbar-width: none;
+	}
+
+	.gallery::-webkit-scrollbar {
+		display: none;
+	}
+
+	.gallery li {
+		flex: none;
+		scroll-snap-align: start;
+	}
+
+	.gallery img {
+		display: block;
+		width: auto;
+		height: 420px;
+		border: 1px solid var(--border);
+		border-radius: 12px;
+		background: var(--surface);
+	}
+
+	.gallery-arrow {
+		position: absolute;
+		top: 50%;
+		display: grid;
+		place-items: center;
+		width: 40px;
+		height: 40px;
+		padding: 0;
+		border: 1px solid var(--border);
+		border-radius: 50%;
+		background: var(--bg);
+		color: var(--text);
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+		cursor: pointer;
+		transform: translateY(-50%);
+	}
+
+	.gallery-arrow:disabled {
+		display: none;
+	}
+
+	.gallery-arrow :global(svg) {
+		width: 20px;
+		height: 20px;
+	}
+
+	.gallery-arrow.prev {
+		left: 10px;
+	}
+
+	.gallery-arrow.prev :global(svg) {
+		transform: rotate(90deg);
+	}
+
+	.gallery-arrow.next {
+		right: 10px;
+	}
+
+	.gallery-arrow.next :global(svg) {
+		transform: rotate(-90deg);
+	}
+
+	/* 사진이 한 장이면 PC에서는 카드 너비에 꽉 차게 보여요 */
+	@media (min-width: 641px) {
+		.gallery li:only-child {
+			flex: 1;
+		}
+
+		.gallery li:only-child img {
+			width: 100%;
+			height: auto;
+		}
+	}
+
 	details {
 		margin-top: 22px;
 		border-top: 1px solid var(--border);
@@ -280,6 +413,19 @@ const detailSections = [
 
 		h3 {
 			font-size: 1.15rem;
+		}
+
+		/* 휴대폰에서는 사진이 화면보다 넓어서 손가락으로 자유롭게 밀어 봐요 */
+		.gallery {
+			scroll-snap-type: none;
+		}
+
+		.gallery img {
+			height: 260px;
+		}
+
+		.gallery-arrow {
+			display: none;
 		}
 	}
 </style>

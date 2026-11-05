@@ -23,6 +23,7 @@ npm run dev   # 미리보기 시작 (끄려면 Ctrl + C)
 | 상단 메뉴 이름 | `src/components/Header.astro` |
 | 브라우저 탭 아이콘 | `public/favicon.svg` |
 | 이력서 PDF | `public/resume.pdf`로 넣고 `content.ts`의 `resume`를 `'/resume.pdf'`로 |
+| 프로젝트 사진 | `public/projects/`에 넣고 `content.ts` 프로젝트의 `images`에 적기 |
 
 ## 배포 (GitHub Pages)
 

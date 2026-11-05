@@ -22,3 +22,6 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# 원본 자료는 공개되지 않도록 제외 (public 폴더 파일은 그대로 사이트에 올라가요)
+public/projects/*.pdf
