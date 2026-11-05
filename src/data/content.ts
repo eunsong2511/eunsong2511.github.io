@@ -23,7 +23,7 @@ export const site = {
 	name: '김은송',
 	role: 'Backend Developer · Service Planner',
 	// 이름 위에 작은 해시태그로 보여요
-	tags: ['백엔드', '서비스기획', 'API설계', 'AI서비스'],
+	tags: ['백엔드', '서비스기획', 'AI서비스'],
 	// 이름 아래 세 줄 소개
 	intro: [
 		'사용자의 문제를 **기획으로 정의하고**, **백엔드로 구현하는** 개발자입니다.',
