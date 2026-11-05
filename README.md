@@ -26,7 +26,7 @@ npm run dev   # 미리보기 시작 (끄려면 Ctrl + C)
 
 ## 배포 (GitHub Pages)
 
-`main` 브랜치에 올리면(push) GitHub Actions가 자동으로 빌드해서 https://dmsthd0110.github.io 에 배포해요. 1~2분 정도 걸리고, 진행 상황은 GitHub 저장소의 **Actions** 탭에서 볼 수 있어요.
+`main` 브랜치에 올리면(push) GitHub Actions가 자동으로 빌드해서 https://eunsong2511.github.io 에 배포해요. 1~2분 정도 걸리고, 진행 상황은 GitHub 저장소의 **Actions** 탭에서 볼 수 있어요.
 
 ```sh
 git add -A

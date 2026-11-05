@@ -32,7 +32,7 @@ export const site = {
 	],
 	email: 'eunsong2511@gmail.com',
 	phone: '', // 공개하고 싶을 때만 입력 (예: '010-0000-0000')
-	github: 'https://github.com/dmsthd0110',
+	github: 'https://github.com/eunsong2511',
 	blog: '', // 블로그가 있다면 주소 입력 (예: 'https://velog.io/@아이디')
 	// 이력서 PDF를 public 폴더에 resume.pdf로 넣고 '/resume.pdf'로 바꾸면 버튼이 생겨요
 	resume: '',
