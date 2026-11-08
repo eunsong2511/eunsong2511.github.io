@@ -114,6 +114,12 @@ export const history = [
 		items: [],
 	},
 	{
+		period: '2026 – 현재',
+		title: '성결대학교 멋쟁이사자처럼 14기',
+		subtitle: '아기사자 · 백엔드 트랙',
+		items: [],
+	},
+	{
 		period: '2026 – 재학 중',
 		title: '성결대학교',
 		subtitle: '컴퓨터공학과',
