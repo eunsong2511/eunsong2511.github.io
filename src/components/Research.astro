@@ -1,0 +1,112 @@
+---
+import { research } from '../data/content';
+import { sectionNumber } from '../utils';
+---
+
+<section id="research" class="section">
+	<div class="container">
+		<p class="eyebrow">{sectionNumber('research')} — Research</p>
+		<h2 class="section-title">연구</h2>
+
+		<div class="list">
+			{
+				research.map((entry) => (
+					<article class="card">
+						<p class="meta">
+							<span class="mono">{entry.period}</span>
+							<span class="lab">{entry.lab}</span>
+						</p>
+						<h3>{entry.title}</h3>
+						{entry.points.length > 0 && (
+							<ul class="points">
+								{entry.points.map((point) => (
+									<li>{point}</li>
+								))}
+							</ul>
+						)}
+
+						{entry.keywords.length > 0 && (
+							<ul class="chips">
+								{entry.keywords.map((keyword) => (
+									<li class="chip">{keyword}</li>
+								))}
+							</ul>
+						)}
+					</article>
+				))
+			}
+		</div>
+	</div>
+</section>
+
+<style>
+	.list {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr);
+		gap: 16px;
+	}
+
+	.card {
+		padding: 28px;
+		border: 1px solid var(--border);
+		border-radius: var(--radius);
+		background: var(--bg);
+	}
+
+	.meta {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 4px 10px;
+		font-size: 0.8125rem;
+		color: var(--subtle);
+	}
+
+	.lab::before {
+		content: '·';
+		margin-right: 10px;
+	}
+
+	h3 {
+		margin-top: 8px;
+		font-size: 1.3rem;
+		font-weight: 700;
+		letter-spacing: -0.025em;
+		line-height: 1.4;
+	}
+
+	.points {
+		margin-top: 10px;
+	}
+
+	.points li {
+		position: relative;
+		padding-left: 16px;
+		color: var(--muted);
+	}
+
+	.points li + li {
+		margin-top: 4px;
+	}
+
+	.points li::before {
+		content: '';
+		position: absolute;
+		left: 2px;
+		top: 0.72em;
+		width: 5px;
+		height: 5px;
+		border-radius: 50%;
+		background: var(--subtle);
+	}
+
+	.chips {
+		margin-top: 16px;
+	}
+
+	@media (max-width: 640px) {
+		.card {
+			padding: 22px 18px;
+		}
+	}
+</style>

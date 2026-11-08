@@ -14,6 +14,7 @@ export const sections = {
 	about: false, // 소개
 	skills: false, // 기술
 	projects: true, // 프로젝트
+	research: true, // 연구
 	history: true, // 이력
 	contact: false, // 연락
 };
@@ -79,7 +80,7 @@ export const projects = [
 		type: '멋쟁이사자처럼 해커톤 · 팀 5명',
 		roles: ['백엔드 전담', '기획 참여'],
 		summary: '초보 러너의 개인 케이던스를 기준으로 무리 없는 완주를 돕고, 기록·계획을 일상 루틴으로 연결하는 러닝 앱',
-		highlight: 'API 설계 · DB · AI 리포트 · 배포까지 서버 전체 담당',
+		highlight: 'API 설계 · DB · AI 리포트 서버 전체 담당',
 		stack: ['FastAPI', 'PostgreSQL', 'SQLAlchemy', 'Alembic', 'OpenAI API', 'Docker', 'Nginx', 'AWS EC2'],
 		links: [{ label: 'GitHub', url: 'https://github.com/Gonu19/Dalli' }],
 		// 사진: public/projects 폴더에 파일을 넣고 [ ] 안에 아래처럼 한 줄씩 적어 주세요. 적은 순서대로 보여요.
@@ -102,6 +103,23 @@ export const projects = [
 			],
 			result: [],
 		},
+	},
+];
+
+// ─── 연구 ─────────────────────────────────────────────────────
+// ⚠️ 이 저장소는 누구나 볼 수 있어요. 교수님께 공개해도 된다고 확인받은 내용만 적어 주세요.
+export const research = [
+	{
+		period: '2026.09 – 현재',
+		lab: '중앙대학교 INC Lab',
+		title: '시각장애인 보행 안전 알림을 위한 경량 VLM 비교',
+		// 제목 아래 항목. 비워 두면 보이지 않아요.
+		points: [
+			'휴대용 기기 환경을 가정해 경량 VLM 두 종의 보행 안전 알림 성능 비교',
+			'응답 속도와 알림 품질을 함께 평가',
+		],
+		// 연구 분야 키워드 (예: '네트워크', 'AI'). 비워 두면 보이지 않아요.
+		keywords: [],
 	},
 ];
 
