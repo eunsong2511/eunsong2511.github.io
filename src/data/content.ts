@@ -75,9 +75,39 @@ export const skills = [
 // 위에 있는 프로젝트가 먼저 보여요. details 안의 항목은 필요 없으면 지워도 돼요.
 export const projects = [
 	{
+		title: '모우',
+		period: '2026.11',
+		type: '멋쟁이사자처럼 연합해커톤(아리톤) · 팀 6명',
+		roles: ['백엔드', '대화 기능 담당'],
+		summary: 'AI 캐릭터와 고민을 나누고, 대화를 감정 일기로 기록해 캘린더로 마음의 변화를 돌아보는 AI 마음 케어 서비스',
+		highlight: '대화 API · AI 캐릭터 답변 · 과거 일기 연결 서버 담당',
+		stack: ['Java', 'Spring Boot', 'Spring Data JPA', 'MySQL', 'Upstage Solar API', 'JUnit'],
+		links: [{ label: 'GitHub', url: 'https://github.com/2026Ganzi-Thon/2026_GANZITHON_TEAM_16_BE' }],
+		images: [
+			{ src: '/projects/mowoo-cover.webp', alt: '모우 소개 이미지: 모든 고민에는 우리만의 이야기가 있으니까' },
+			{ src: '/projects/mowoo-home.webp', alt: '모우 메인 화면: 캐릭터 선택, 오늘의 기록, 마음 캘린더' },
+			{ src: '/projects/mowoo-chat.webp', alt: '모우 대화 화면: 대화 진행도, 과거의 마음 발견, 일기 자동 생성 버튼' },
+			{ src: '/projects/mowoo-diary.webp', alt: '모우 기록 화면: 기록 방식 선택, 일기 작성·수정, 일기 저장' },
+			{ src: '/projects/mowoo-calendar.webp', alt: '모우 감정 캘린더 화면: 날짜별 감정을 색으로 표시' },
+		] as { src: string; alt: string }[],
+		details: {
+			problem: '누구나 고민은 있지만, 사람에게 털어놓거나 감정을 글로 정리하기는 막막합니다. AI에게 속마음을 털어놓는 사람은 늘고 있지만, 기존 서비스는 한 가지 관점의 일회성 상담에 머물러 대화가 기록과 회고로 이어지지 않았습니다.',
+			development: [
+				'대화 파트를 맡아 대화 시작·보관함·상세·종료·삭제, 메시지 전송·수정, 과거 일기 연결까지 API 9개를 Spring Boot · JPA로 구현',
+				'Upstage Solar API로 캐릭터마다 다른 말투의 답변을 만들고, 대화를 마치면 제목과 요약을 자동으로 생성',
+				'지금 고민과 관련된 지난 일기를 AI가 최대 3개 골라 보여 주고, 사용자가 동의하면 과거와 지금의 마음을 비교하는 답변을 이어 주는 기능 구현',
+				'자해·자살 표현에는 109 상담 안내를 반드시 넣고 일상적인 걱정에는 넣지 않도록 기준을 세우고, 답변에 안내가 빠지면 서버가 캐릭터 말투로 덧붙이도록 보완',
+				'사용자 입력과 시스템 지시를 분리하고 입력·답변 길이를 제한했으며, AI 응답이 실패하면 사용자 메시지까지 되돌려 대화 기록이 어긋나지 않도록 설계',
+				'실제 AI로 답변 품질을 재는 측정 테스트를 만들어 프롬프트를 조정하고, 과거 일기 후보 선택 정확도를 측정 기준 83%에서 100%로 개선',
+				'같은 대화에 요청이 겹쳐도 메시지 순서가 꼬이거나 500 오류가 나지 않도록 DB 잠금을 적용하고, 테스트 파일 17개(MySQL 연동·동시성 테스트 포함)로 검증',
+			],
+			result: [],
+		},
+	},
+	{
 		title: '달리',
 		period: '2026.08',
-		type: '멋쟁이사자처럼 해커톤 · 팀 5명',
+		type: '멋쟁이사자처럼 중앙해커톤 · 팀 5명',
 		roles: ['백엔드 전담', '기획 참여'],
 		summary: '초보 러너의 개인 케이던스를 기준으로 무리 없는 완주를 돕고, 기록·계획을 일상 루틴으로 연결하는 러닝 앱',
 		highlight: 'API 설계 · DB · AI 리포트 서버 전체 담당',
