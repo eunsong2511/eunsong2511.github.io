@@ -157,20 +157,21 @@ export const research = [
 export const history = [
 	{
 		period: '2026.09 – 현재',
-		title: '중앙대학교 INC Lab',
-		subtitle: '학부연구생',
+		title: '중앙대학교 INC Lab 학부연구생',
+		// 제목 아래 작은 설명. 비워 두면 보이지 않아요.
+		subtitle: '',
 		items: [],
 	},
 	{
-		period: '2026 – 현재',
+		period: '2026.03 – 2026.12',
 		title: '성결대학교 멋쟁이사자처럼 14기',
-		subtitle: '아기사자 · 백엔드 트랙',
+		subtitle: '아기사자 · 백엔드 트랙 · 수료',
 		items: [],
 	},
 	{
 		period: '2026 – 재학 중',
-		title: '성결대학교',
-		subtitle: '컴퓨터공학과',
+		title: '성결대학교 컴퓨터공학과',
+		subtitle: '',
 		items: [],
 	},
 ];
