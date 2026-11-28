@@ -156,16 +156,22 @@ export const research = [
 // ─── 이력 (경력·교육) ─────────────────────────────────────────
 export const history = [
 	{
-		period: '2026.09 – 현재',
-		title: '중앙대학교 INC Lab 학부연구생',
+		period: '2027',
+		title: '성결대학교 멋쟁이사자처럼 15기 백엔드트랙 운영진',
 		// 제목 아래 작은 설명. 비워 두면 보이지 않아요.
 		subtitle: '',
 		items: [],
 	},
 	{
 		period: '2026.03 – 2026.12',
-		title: '성결대학교 멋쟁이사자처럼 14기',
-		subtitle: '아기사자 · 백엔드 트랙 · 수료',
+		title: '성결대학교 멋쟁이사자처럼 14기 백엔드트랙 아기사자 (수료)',
+		subtitle: '',
+		items: [],
+	},
+	{
+		period: '2026.09 – 현재',
+		title: '중앙대학교 INC Lab 학부연구생',
+		subtitle: '',
 		items: [],
 	},
 	{
